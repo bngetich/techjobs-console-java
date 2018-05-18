@@ -44,6 +44,7 @@ public class JobData {
             }
         }
 
+        values.sort(String::compareToIgnoreCase);
         return values;
     }
 
@@ -77,7 +78,7 @@ public class JobData {
 
             String aValue = row.get(column);
 
-            if (aValue.equalsIgnoreCase(value)) {
+            if (aValue.toLowerCase().contains(value.toLowerCase())) {
                 jobs.add(row);
             }
         }
@@ -102,9 +103,10 @@ public class JobData {
 
         for (HashMap<String, String> row : allJobs) {
             for (Map.Entry<String, String> jobEntry: row.entrySet()) {
+                //System.out.println("Value:" + jobEntry.getValue());
                 String aValue = jobEntry.getValue();
 
-                if(aValue.equalsIgnoreCase(value)){
+                if(aValue.toLowerCase().contains(value.toLowerCase())){
                     jobs.add(row);
                 }
             }
